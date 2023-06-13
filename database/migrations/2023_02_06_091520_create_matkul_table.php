@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('siswa', function (Blueprint $table) {
+        Schema::create('matkul', function (Blueprint $table) {
             $table->id();
-            $table->string('nis')->unique();
-            $table->enum('gender', ['L', 'P']);
+            $table->string('matkul')->unique();
+            $table->string('sks');
+            $table->enum('semester', ['1', '2', '3', '4', '5', '6', '7', '8']);
             $table->foreignId('id_kelas')->nullable()->references('id')->on('kelas');
             $table->foreignId('id_user')->nullable()->references('id')->on('users');
             $table->timestamps();
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('siswa');
+        Schema::dropIfExists('matkul');
     }
 };

@@ -83,6 +83,18 @@
                     <li class="px-3 pt-3 pb-2">
                         <span class="text-uppercase small font-weight-bold">Data</span>
                     </li>
+                    <li class="{{ Request::is('data-dosen') ? 'active' : '' }} sidebar-layout">
+                        <a href="{{ route('index-dosen') }}" class="svg-icon">
+                            <i class="">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                                </svg>
+                            </i>
+                            <span class="ml-2">Data Dosen</span>
+                        </a>
+                    </li>
                     <li class="{{ Request::is('data-siswa') ? 'active' : '' }} sidebar-layout">
                         <a href="{{ route('index-siswa') }}" class="svg-icon">
                             <i class="">
@@ -93,6 +105,31 @@
                                 </svg>
                             </i>
                             <span class="ml-2">Data Siswa</span>
+                        </a>
+                    </li>
+                    <li class="{{ Request::is('data-kelas') ? 'active' : '' }} sidebar-layout">
+                        <a href="{{ route('index-kelas') }}" class="svg-icon">
+                            <i class="">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
+                                </svg>
+                            </i>
+                            <span class="ml-2">Data Kelas</span>
+                        </a>
+                    </li>
+                    <li class="{{ Request::is('data-matkul') ? 'active' : '' }} sidebar-layout">
+                        <a href="{{ route('index-matkul') }}" class="svg-icon">
+                            <i class="">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M16.5 3.75V16.5L12 14.25 7.5 16.5V3.75m9 0H18A2.25 2.25 0 0120.25 6v12A2.25 2.25 0 0118 20.25H6A2.25 2.25 0 013.75 18V6A2.25 2.25 0 016 3.75h1.5m9 0h-9" />
+                                </svg>
+
+                            </i>
+                            <span class="ml-2">Data Mata Kuliah</span>
                         </a>
                     </li>
                     <li class="{{ Request::is('data-user') ? 'active' : '' }} sidebar-layout">
