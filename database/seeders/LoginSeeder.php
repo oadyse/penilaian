@@ -19,22 +19,22 @@ class LoginSeeder extends Seeder
         DB::table('users')->insert(
             [
                 [
-                    'name' => 'Eka',
+                    'name' => 'SuperAdmin',
                     'username' => 'admin',
                     'role' => 'admin',
                     'password' => '123456',
                 ],
                 [
-                    'name' => 'Oady',
+                    'name' => 'Nur Fitrianti Fahrudin S.Kom., M.T.',
                     'username' => 'guru',
                     'role' => 'guru',
                     'password' => '123456',
                 ],
                 [
-                    'name' => 'Abdan Syakuro Ananda Papalya bin Adin Papalya',
-                    'username' => '20220113',
+                    'name' => 'Rizvan',
+                    'username' => 'rizvan',
                     'role' => 'siswa',
-                    'password' => '202201131',
+                    'password' => '123456',
                 ],
             ]
         );

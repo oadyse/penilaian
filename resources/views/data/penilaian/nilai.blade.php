@@ -22,9 +22,6 @@
                         <div class="row">
                             <div class="col-6">
                                 <form class="form-inline" method="GET">
-                                    {{-- <div class="col-4">
-                                <p>Kelas : {{ $class->kelas }}</p>
-                            </div> --}}
                                     <div class="col-10">
                                         <select class="form-control choicesjs" id="inputGroupSelect01" name="id_kelas">
                                             <option selected disabled>Search Kelas</option>

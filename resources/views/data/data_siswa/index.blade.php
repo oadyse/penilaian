@@ -13,31 +13,13 @@
                             <div class="header-title">
                                 <h4 class="card-title">Data siswa</h4>
                             </div>
-                            <button type="button" class="btn btn-success rounded-pill iq-icons-list py-0 px-3 mb-0"
+                            <button type="button" class="btn btn-primary rounded-pill iq-icons-list py-0 px-3 mb-0"
                                 data-toggle="modal" data-target="#create">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
-                                </svg>
-                                Upload Excel Data Siswa
+                                Tambah Data
                             </button>
 
                             {{-- Modal Create --}}
                             @include('data.data_siswa.create')
-                        </div>
-                        <div class="input-group mb-3 px-3">
-                            <input type="text" class="form-control col-4" placeholder="Search"
-                                aria-label="notification" aria-describedby="basic-addon4">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="submit">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20px" Height="20px" fill="none"
-                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                                    </svg>
-                                </button>
-                            </div>
                         </div>
 
                         <div class="card-body">

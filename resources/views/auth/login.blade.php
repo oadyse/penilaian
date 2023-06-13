@@ -13,13 +13,7 @@
     <link rel="stylesheet" href="{{ asset('datum') }}/assets/css/backend.css?v=1.0.0">
 </head>
 
-<body class=" "style="background: #280a50">
-    <div class="text-center" style="position:absolute; top:7%; left: 25%; right:25%">
-        <h1 style="color:white">Penilaian Autentik <br> Teks Bahasa Indonesia</h1>
-    </div>
-    <div class="text-center" style="position:absolute; bottom:7%; left: 25%; right:25%">
-        <H3 style="color:white">IDENTITAS SEKOLAH <br> KOTA</H3>
-    </div>
+<body class=" "style="background: #280a50">`
     <div class="wrapper">
         <section class="login-content">
             <div class="container h-100">
@@ -27,11 +21,11 @@
                     <div class="col-md-5">
                         <div class="card p-1 mb-0 mt-5">
                             <div class="card-body">
-                                {{-- <h3 class="mb-3 font-weight-bold text-center">Log In</h3>
+                                <h3 class="mb-3 font-weight-bold text-center">Log In</h3>
                                 <div class="my-5">
                                     <p class="line-around text-secondary mb-0"><span class="line-around-1">Input your
                                             data to login</span></p>
-                                </div> --}}
+                                </div>
                                 <form method="POST" action="{{ route('login.post') }}">
                                     @csrf
                                     <div class="row">

@@ -23,9 +23,7 @@ class PenilaianController extends Controller
         if (!empty($filter)) {
             $data = DB::table('penilaian')
                 ->rightJoin('siswa', 'penilaian.id_siswa', '=', 'siswa.id')
-                ->leftJoin('answer', 'siswa.id', '=', 'answer.id_siswa')
                 ->leftJoin('kelas', 'siswa.id_kelas', '=', 'kelas.id')
-                ->leftJoin('soal', 'answer.id_soal', '=', 'soal.id')
                 ->where('siswa.id_kelas', '=', $filter)
                 ->orderBy('siswa.id_kelas')
                 ->orderBy('siswa.nama')
@@ -34,9 +32,7 @@ class PenilaianController extends Controller
         } else {
             $data = DB::table('penilaian')
                 ->rightJoin('siswa', 'penilaian.id_siswa', '=', 'siswa.id')
-                ->leftJoin('answer', 'siswa.id', '=', 'answer.id_siswa')
                 ->leftJoin('kelas', 'siswa.id_kelas', '=', 'kelas.id')
-                ->leftJoin('soal', 'answer.id_soal', '=', 'soal.id')
                 ->orderBy('siswa.id_kelas')
                 ->orderBy('siswa.nama')
                 ->select(['*','siswa.id as id_2'])

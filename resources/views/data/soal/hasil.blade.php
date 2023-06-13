@@ -28,78 +28,9 @@
                             </div>
                             <div class="row m-auto">
                                 <div class="col-2">Nama</div>
-                                <div class="col-10">{{ ': ' . Auth()->user()->siswa->nama }}</div>
+                                <div class="col-10">{{ ': ' . Auth()->user()->name }}</div>
                             </div>
                             <hr>
-                            @foreach ($soal as $q)
-                                <div class="row m-auto">
-                                    <div class="col-2 mb-2">
-                                        <b>{{ $q->judul }}</b>
-                                    </div>
-                                </div>
-                                <div class="row m-auto">
-                                    <div class="col-10 mb-2">
-                                        {{ $q->soal }}
-                                    </div>
-                                </div>
-                            @endforeach
-                            <div class="row m-auto">
-                                <div class="col-2 mb-2">
-                                    <b>Jawaban</b>
-                                </div>
-                            </div>
-                            @if (empty($answer->jawaban))
-                                <div class="row m-auto">
-                                    <div class="col-10">
-                                        <i>Jawaban kosong. Anda belum submit soal.</i>
-                                    </div>
-                                </div>
-                            @else
-                                <div class="row m-auto">
-                                    <div class="col-10">
-                                        {{ $answer->jawaban }}
-                                    </div>
-                                </div>
-                                <hr>
-
-                                @if ($exists)
-                                    <div class="row m-auto">
-                                        <div class="col-12 mb-2">
-                                            <b>Nilai Ketrampilan:
-                                                @php
-                                                    $ketrampilan = ($answer->penilaian->ketrampilan * 100) / 13;
-                                                @endphp
-                                                {{ number_format((float) $ketrampilan, 2, '.', '') }}</b>
-                                        </div>
-                                        <div class="col-12 mb-2">
-                                            <b>Nilai Sikap:
-                                                @php
-                                                    if ($answer->penilaian->sikap == 4) {
-                                                        $sikap = 100;
-                                                    } elseif ($answer->penilaian->sikap == 3) {
-                                                        $sikap = 90;
-                                                    } elseif ($answer->penilaian->sikap == 2) {
-                                                        $sikap = 80;
-                                                    } elseif ($answer->penilaian->sikap == 1) {
-                                                        $sikap = 70;
-                                                    } elseif (empty($answer->penilaian->sikap)) {
-                                                        $sikap = 0;
-                                                    }
-                                                @endphp
-                                                {{ $sikap }}</b>
-                                        </div>
-                                    </div>
-                                    <div class="row m-auto">
-                                        <div class="col-10">
-                                            <b>Catatan: {{ $answer->penilaian->catatan }} </b>
-                                        </div>
-                                    </div>
-                                @else
-                                    <div class="row justify-content-center">
-                                        <p>Nilai belum diinput.</p>
-                                    </div>
-                                @endif
-                            @endif
                         </div>
                     </div>
                 </div>
