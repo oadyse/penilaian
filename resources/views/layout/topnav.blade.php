@@ -25,16 +25,15 @@
                                 aria-expanded="false">
                                 <img src="{{ asset('datum/assets/images/user/1.jpg') }}"
                                     class="img-fluid avatar-rounded" alt="user">
-                                <?php
-                                if (Auth::user()->role == 'admin') {
-                                    $role = 'Admin';
-                                } elseif (Auth::user()->role == 'guru') {
-                                    $role = 'Guru';
-                                } elseif (Auth::user()->role == 'siswa') {
-                                    $role = 'Siswa';
-                                }
-                                ?>
-                                <span class="mb-0 ml-2 user-name">{{ Auth::user()->name }} ({{ $role }})</span>
+                                @if (Auth::user()->role == 'admin')
+                                    <span class="mb-0 ml-2 user-name">SuperAdmin (Admin)</span>
+                                @elseif (Auth::user()->role == 'guru')
+                                    <span class="mb-0 ml-2 user-name">{{ Auth::user()->dosen->nama }}
+                                        (Dosen)</span>
+                                @elseif (Auth::user()->role == 'siswa')
+                                    <span class="mb-0 ml-2 user-name">{{ Auth::user()->siswa->nama }}
+                                        (Mahasiswa)</span>
+                                @endif
                             </a>
                             <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                                 <li class="dropdown-item  d-flex svg-icon border-top">

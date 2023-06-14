@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dosen;
 use App\Models\Kelas;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SiswaController extends Controller
 {
@@ -12,7 +14,8 @@ class SiswaController extends Controller
     {
         $data = Siswa::paginate(10);
         $kelas = Kelas::All();
-        return view('data.data_siswa.index', compact('data', 'kelas'));
+        $dosen = Dosen::All();
+        return view('data.data_siswa.index', compact('data', 'kelas', 'dosen'));
     }
 
     public function addNew(Request $request)
@@ -22,6 +25,8 @@ class SiswaController extends Controller
             'nama' => $request->nama,
             'gender' => $request->gender,
             'id_kelas' => $request->id_kelas,
+            'id_user' => Auth::user()->id,
+            'pa' => $request->pa,
         ]);
         $addSiswa->save();
 
@@ -40,6 +45,8 @@ class SiswaController extends Controller
             'nama' => $request->nama,
             'gender' => $request->gender,
             'id_kelas' => $request->id_kelas,
+            'id_user' => Auth::user()->id,
+            'pa' => $request->pa,
         ]);
         if ($process) {
             return redirect('/data-siswa')->with("successUpdate", "Data updated successfully");

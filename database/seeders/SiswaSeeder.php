@@ -19,9 +19,11 @@ class SiswaSeeder extends Seeder
             [
                 [
                     'nis' => 'M3119082',
+                    'nama' => 'Rizvan AS',
                     'gender' => 'L',
                     'id_kelas' => '1',
-                    'id_user' => '1',
+                    'id_user' => '3',
+                    'pa' => '1',
                 ],
             ]
         );

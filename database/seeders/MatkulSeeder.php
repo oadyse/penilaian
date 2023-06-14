@@ -18,11 +18,32 @@ class MatkulSeeder extends Seeder
         DB::table('matkul')->insert(
             [
                 [
+                    'matkul' => 'Sistem Informasi Berbasis Web - Teori',
+                    'sks' => '4',
+                    'semester' => '1',
+                    'id_kelas' => '1',
+                    'id_user' => '1',
+                ],
+                [
                     'matkul' => 'Sistem Informasi Berbasis Web - Praktikum',
                     'sks' => '4',
                     'semester' => '1',
                     'id_kelas' => '1',
-                    'id_matkul' => '1',
+                    'id_user' => '1',
+                ],
+                [
+                    'matkul' => 'Database - Teori',
+                    'sks' => '4',
+                    'semester' => '1',
+                    'id_kelas' => '1',
+                    'id_user' => '1',
+                ],
+                [
+                    'matkul' => 'Database - Praktikum',
+                    'sks' => '4',
+                    'semester' => '1',
+                    'id_kelas' => '1',
+                    'id_user' => '1',
                 ],
             ]
         );

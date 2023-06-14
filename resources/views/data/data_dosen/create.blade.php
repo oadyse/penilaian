@@ -9,11 +9,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{ route('add-user') }}" class="needs-validation" novalidate>
+                <form method="POST" action="{{ route('add-dosen') }}" class="needs-validation" novalidate>
                     @csrf
                     <div class="form-row mb-3">
                         <div class="col-3 m-auto">
-                            <label for="validationTooltip05">Nama</label>
+                            <label for="validationTooltip05">NIK</label>
                         </div>
                         <div class="col-9">
                             <input type="text" class="form-control" id="validationTooltip05" name="name" required>
@@ -24,7 +24,7 @@
                     </div>
                     <div class="form-row mb-3">
                         <div class="col-3 m-auto">
-                            <label for="validationTooltip05">Username</label>
+                            <label for="validationTooltip05">Nama</label>
                         </div>
                         <div class="col-9">
                             <input type="text" class="form-control" id="validationTooltip05" name="username"
@@ -36,34 +36,45 @@
                     </div>
                     <div class="form-row mb-3">
                         <div class="col-3 m-auto">
-                            <label for="validationTooltip05">Password</label>
+                            <label for="validationTooltip05">Jenis Kelamin</label>
                         </div>
                         <div class="col-9">
-                            <input type="password" class="form-control" id="validationTooltip05" name="password"
-                                required>
-                            <div class="invalid-tooltip">
-                                Please Add the Data!
+                            <div class="radio d-inline-block m-2">
+                                <input type="radio" name="gender" id="radio2" value="L">
+                                <label for="radio2">Laki-laki</label>
+                            </div>
+                            <div class="radio d-inline-block m-2">
+                                <input type="radio" name="gender" id="radio2" value="P">
+                                <label for="radio2">Perempuan</label>
                             </div>
                         </div>
                     </div>
                     <div class="form-row mb-3">
                         <div class="col-3 m-auto">
-                            <label for="validationTooltip05">Role</label>
+                            <label for="validationTooltip05">Mata Kuliah yang Diampu</label>
                         </div>
                         <div class="col-9">
-                            <div class="radio d-inline-block m-2">
-                                <input type="radio" name="role" id="radio2" value="admin">
-                                <label for="radio2">Admin</label>
-                            </div>
-                            <div class="radio d-inline-block m-2">
-                                <input type="radio" name="role" id="radio2" value="guru">
-                                <label for="radio2">Guru</label>
-                            </div>
-
-                            <div class="radio d-inline-block m-2">
-                                <input type="radio" name="role" id="radio2" value="siswa">
-                                <label for="radio2">Siswa</label>
-                            </div>
+                            <select multiple class="form-control choicesjs" id="sel1" name="id_parameter[]">
+                                @foreach ($matkul as $x)
+                                    <option value="{{ $x->id }}">
+                                        {{ $x->matkul }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row mb-3">
+                        <div class="col-3 m-auto">
+                            <label for="validationTooltip05">Kelas</label>
+                        </div>
+                        <div class="col-9">
+                            <select multiple class="form-control choicesjs" id="sel1" name="id_parameter[]">
+                                @foreach ($kelas as $class)
+                                    <option value="{{ $class->id }}">
+                                        {{ $class->kelas }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
             </div>

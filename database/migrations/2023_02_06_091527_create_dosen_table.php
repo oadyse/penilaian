@@ -16,7 +16,9 @@ return new class extends Migration
         Schema::create('dosen', function (Blueprint $table) {
             $table->id();
             $table->string('nik')->unique();
+            $table->string('nama');
             $table->enum('gender', ['L', 'P']);
+            $table->foreignId('id_user')->nullable()->references('id')->on('users');
             $table->foreignId('id_kelas')->nullable()->references('id')->on('kelas');
             $table->foreignId('id_matkul')->nullable()->references('id')->on('matkul');
             $table->timestamps();

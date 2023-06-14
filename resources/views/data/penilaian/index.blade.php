@@ -28,7 +28,7 @@
                                             <th width="2%">No</th>
                                             <th width="10%">NIM</th>
                                             <th>Nama Lengkap</th>
-                                            <th width="15%">PA</th>
+                                            <th width="15%">Nilai Akhir</th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -46,7 +46,7 @@
                                             <td></td>
                                             <td>
                                                 <a class="iq-icons-list m-0 text-left" href="" title="Edit"
-                                                    data-toggle="modal" data-target="#edit{{ $id }}">
+                                                    data-toggle="modal" data-target="#detail{{ $id }}">
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                         viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                                         class="m-0">
@@ -55,8 +55,8 @@
                                                     </svg>
                                                 </a>
 
-                                                {{-- Modal Edit --}}
-                                                {{-- @include('data.penilaian.edit') --}}
+                                                {{-- Modal detail --}}
+                                                {{-- @include('data.penilaian.detail') --}}
                                             </td>
                                         </tr>
                                         <?php

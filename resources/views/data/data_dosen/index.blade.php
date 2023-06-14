@@ -40,14 +40,26 @@
                                         <?php
                                         $no = 1;
 
-                                        foreach ($data as $user) {
-                                            $id = $user->id;
+                                        foreach ($data as $dosen) {
+                                            $id = $dosen->id;
                                         ?>
                                         <tr>
                                             <td>{{ $no }}</td>
-                                            <td>{{ $user->name }}</td>
-                                            <td>{{ $user->username }}</td>
-                                            <td>{{ $user->role }}</td>
+                                            <td>{{ $dosen->nik }}</td>
+                                            <td>{{ $dosen->nama }}</td>
+                                            <td>
+                                                @if ($dosen->gender == 'P')
+                                                    {{ 'Perempuan' }}
+                                                @else
+                                                    {{ 'Laki-laki' }}
+                                                @endif
+                                            </td>
+                                            <td>
+
+                                            </td>
+                                            <td>
+
+                                            </td>
                                             <td>
                                                 <a class="iq-icons-list m-0 text-left" href="" title="Edit"
                                                     data-toggle="modal" data-target="#edit{{ $id }}">
@@ -59,7 +71,7 @@
                                                     </svg>
                                                 </a>
                                                 <a class="iq-icons-list m-0 text-danger"
-                                                    href="{{ route('delete-user', base64_encode($id)) }}"
+                                                    href="{{ route('delete-dosen', base64_encode($id)) }}"
                                                     title="Delete">
                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                                         fill="currentColor" class="m-0">
@@ -70,7 +82,7 @@
                                                 </a>
 
                                                 {{-- Modal Edit --}}
-                                                @include('data.data_user.edit')
+                                                @include('data.data_dosen.edit')
                                             </td>
                                         </tr>
                                         <?php

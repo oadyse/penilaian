@@ -16,10 +16,9 @@ class KelasController extends Controller
     public function addNew(Request $request)
     {
         $addkelas = Kelas::create([
-            'name' => $request->name,
-            'username' => $request->username,
-            'password' => bcrypt($request->password),
-            'role' => $request->role,
+            'semester' => $request->semester,
+            'kelas' => $request->kelas,
+            'tahun' => $request->tahun,
         ]);
         $addkelas->save();
 
@@ -34,10 +33,9 @@ class KelasController extends Controller
     {
         $id = base64_decode($id);
         $process = Kelas::findOrFail($id)->update([
-            'name' => $request->name,
-            'username' => $request->username,
-            'password' => bcrypt($request->password),
-            'role' => $request->role,
+            'semester' => $request->semester,
+            'kelas' => $request->kelas,
+            'tahun' => $request->tahun,
         ]);
         if ($process) {
             return redirect('/data-kelas')->with("successUpdate", "Data updated successfully");

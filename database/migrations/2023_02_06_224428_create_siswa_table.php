@@ -16,9 +16,11 @@ return new class extends Migration
         Schema::create('siswa', function (Blueprint $table) {
             $table->id();
             $table->string('nis')->unique();
+            $table->string('nama');
             $table->enum('gender', ['L', 'P']);
             $table->foreignId('id_kelas')->nullable()->references('id')->on('kelas');
             $table->foreignId('id_user')->nullable()->references('id')->on('users');
+            $table->foreignId('pa')->nullable()->references('id')->on('dosen');
             $table->timestamps();
         });
     }

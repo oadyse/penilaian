@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dosen;
+use App\Models\Kelas;
+use App\Models\Matkul;
 use Illuminate\Http\Request;
 
 class DosenController extends Controller
@@ -10,7 +12,9 @@ class DosenController extends Controller
     public function index()
     {
         $data = Dosen::All();
-        return view('data.data_dosen.index', compact('data'));
+        $kelas = Kelas::All();
+        $matkul = Matkul::All();
+        return view('data.data_dosen.index', compact('data', 'kelas', 'matkul'));
     }
 
     public function addNew(Request $request)

@@ -11,7 +11,7 @@
                     <div class="card">
                         <div class="card-header d-flex justify-content-between">
                             <div class="header-title">
-                                <h4 class="card-title">Data User</h4>
+                                <h4 class="card-title">Data Kelas</h4>
                             </div>
                             <button type="button" class="btn btn-primary rounded-pill" data-toggle="modal"
                                 data-target="#create">
@@ -19,7 +19,7 @@
                             </button>
 
                             {{-- Modal Create --}}
-                            @include('data.data_user.create')
+                            @include('data.data_kelas.create')
 
                         </div>
                         <div class="card-body">
@@ -28,24 +28,24 @@
                                     <thead>
                                         <tr>
                                             <th width="2data.uji.index%">No</th>
-                                            <th>Nama</th>
-                                            <th>Username</th>
-                                            <th>Role</th>
-                                            <th>Aksi</th>
+                                            <th>Semester</th>
+                                            <th>Kelas</th>
+                                            <th>Tahun Angkatan</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         $no = 1;
 
-                                        foreach ($data as $user) {
-                                            $id = $user->id;
+                                        foreach ($data as $kelas) {
+                                            $id = $kelas->id;
                                         ?>
                                         <tr>
                                             <td>{{ $no }}</td>
-                                            <td>{{ $user->name }}</td>
-                                            <td>{{ $user->username }}</td>
-                                            <td>{{ $user->role }}</td>
+                                            <td>{{ $kelas->semester }}</td>
+                                            <td>{{ $kelas->kelas }}</td>
+                                            <td>{{ $kelas->tahun }}</td>
                                             <td>
                                                 <a class="iq-icons-list m-0 text-left" href="" title="Edit"
                                                     data-toggle="modal" data-target="#edit{{ $id }}">
@@ -57,7 +57,7 @@
                                                     </svg>
                                                 </a>
                                                 <a class="iq-icons-list m-0 text-danger"
-                                                    href="{{ route('delete-user', base64_encode($id)) }}"
+                                                    href="{{ route('delete-kelas', base64_encode($id)) }}"
                                                     title="Delete">
                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                                         fill="currentColor" class="m-0">
@@ -68,7 +68,7 @@
                                                 </a>
 
                                                 {{-- Modal Edit --}}
-                                                @include('data.data_user.edit')
+                                                @include('data.data_kelas.edit')
                                             </td>
                                         </tr>
                                         <?php

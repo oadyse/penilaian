@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('kelas', function (Blueprint $table) {
             $table->id();
-            $table->integer('level');
+            $table->integer('semester');
             $table->string('kelas');
+            $table->integer('tahun');
             $table->timestamps();
         });
     }

@@ -34,6 +34,11 @@ class User extends Authenticatable
 
     public function siswa()
     {
-        return $this->hasOne(Siswa::class, 'id_user', 'id');
+        return $this->belongsTo(Siswa::class, 'id', 'id_user');
+    }
+
+    public function dosen()
+    {
+        return $this->belongsTo(Dosen::class, 'id', 'id_user');
     }
 }

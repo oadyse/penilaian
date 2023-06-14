@@ -45,17 +45,6 @@ Route::middleware(['user-access:siswa'])->group(function () {
     Route::get('/data-penilaian', [PenilaianController::class, 'index'])->name('index-penilaian');
     Route::post('/data-penilaian/update/{id}', [PenilaianController::class, 'processUpdate'])->name('edit-penilaian');
 
-    // Soal
-    Route::get('/soal', [SoalController::class, 'index'])->name('index-soal');
-    Route::get('/soal/form', [SoalController::class, 'form'])->name('form-soal');
-    Route::post('/soal/create/add', [SoalController::class, 'addNew'])->name('add-soal');
-    Route::get('/soal/preview/{id}', [SoalController::class, 'preview'])->name('preview-soal');
-    Route::get('/soal/edit/{id}', [SoalController::class, 'edit'])->name('edit-soal');
-    Route::post('/soal/update/{id}', [SoalController::class, 'processUpdate'])->name('update-soal');
-    Route::get('/soal/delete/{id}', [SoalController::class, 'delete'])->name('delete-soal');
-
-    Route::get('/hal_soal', [SoalController::class, 'soal'])->name('soal-siswa');
-    Route::post('/hal_soal/send_answer', [SoalController::class, 'addAnswer'])->name('send-answer');
     Route::get('/hal_hasil', [SoalController::class, 'hasil'])->name('hasil-siswa');
 
     // Dosen

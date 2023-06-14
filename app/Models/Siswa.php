@@ -17,4 +17,9 @@ class Siswa extends Model
     {
         return $this->hasOne(Kelas::class, 'id', 'id_kelas');
     }
+
+    public function dosen()
+    {
+        return $this->hasOne(Dosen::class, 'id', 'pa');
+    }
 }

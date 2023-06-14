@@ -15,7 +15,7 @@
                             </div>
                             <button type="button" class="btn btn-primary rounded-pill iq-icons-list py-0 px-3 mb-0"
                                 data-toggle="modal" data-target="#create">
-                                Tambah Data
+                                Add New
                             </button>
 
                             {{-- Modal Create --}}
@@ -30,8 +30,9 @@
                                             <th width="2data.uji.index%">No</th>
                                             <th>NIS</th>
                                             <th>Nama</th>
-                                            <th>R/N</th>
+                                            <th>Jenis Kelamim</th>
                                             <th>Kelas</th>
+                                            <th>PA (Pembimbing Akademik)</th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -47,8 +48,15 @@
                                             <td>{{ $no }}</td>
                                             <td>{{ $siswa->nis }}</td>
                                             <td>{{ $siswa->nama }}</td>
-                                            <td>{{ $siswa->gender }}</td>
+                                            <td>
+                                                @if ($siswa->gender == 'P')
+                                                    {{ 'Perempuan' }}
+                                                @else
+                                                    {{ 'Laki-laki' }}
+                                                @endif
+                                            </td>
                                             <td>{{ $siswa->kelas->kelas }}</td>
+                                            <td>{{ $siswa->dosen->nama }}</td>
                                             <td>
                                                 <a class="iq-icons-list m-0 text-left" href="" title="Edit"
                                                     data-toggle="modal" data-target="#edit{{ $id }}">

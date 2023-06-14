@@ -16,10 +16,9 @@ class MatkulController extends Controller
     public function addNew(Request $request)
     {
         $addmatkul = Matkul::create([
-            'name' => $request->name,
-            'username' => $request->username,
-            'password' => bcrypt($request->password),
-            'role' => $request->role,
+            'matkul' => $request->matkul,
+            'sks' => $request->sks,
+            'semester' => $request->semester,
         ]);
         $addmatkul->save();
 
@@ -34,10 +33,9 @@ class MatkulController extends Controller
     {
         $id = base64_decode($id);
         $process = Matkul::findOrFail($id)->update([
-            'name' => $request->name,
-            'username' => $request->username,
-            'password' => bcrypt($request->password),
-            'role' => $request->role,
+            'matkul' => $request->matkul,
+            'sks' => $request->sks,
+            'semester' => $request->semester,
         ]);
         if ($process) {
             return redirect('/data-matkul')->with("successUpdate", "Data updated successfully");

@@ -19,19 +19,16 @@ class LoginSeeder extends Seeder
         DB::table('users')->insert(
             [
                 [
-                    'name' => 'SuperAdmin',
                     'username' => 'admin',
                     'role' => 'admin',
                     'password' => '123456',
                 ],
                 [
-                    'name' => 'Nur Fitrianti Fahrudin S.Kom., M.T.',
                     'username' => 'guru',
                     'role' => 'guru',
                     'password' => '123456',
                 ],
                 [
-                    'name' => 'Rizvan',
                     'username' => 'rizvan',
                     'role' => 'siswa',
                     'password' => '123456',

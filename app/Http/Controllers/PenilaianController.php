@@ -15,7 +15,6 @@ class PenilaianController extends Controller
     {
         // $answer = Answer::all();
         $kelas = Kelas::all();
-        $kriteria = Kriteria::all();
 
         // Filter
         $filter = $request->query('id_kelas');
@@ -39,7 +38,7 @@ class PenilaianController extends Controller
                 ->paginate(10);
         }
         $data->withQueryString();
-        return view('data.penilaian.index', compact('data', 'kelas', 'filter', 'kriteria'));
+        return view('data.penilaian.index', compact('data', 'kelas', 'filter'));
     }
 
     public function processUpdate(Request $request, $id)

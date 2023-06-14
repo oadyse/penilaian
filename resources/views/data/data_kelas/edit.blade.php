@@ -3,22 +3,36 @@
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createTitle">Edit Data User</h5>
+                <h5 class="modal-title" id="createTitle">Edit Data Kelas</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{ route('edit-user', base64_encode($id)) }}" class="needs-validation"
+                <form method="POST" action="{{ route('edit-kelas', base64_encode($id)) }}" class="needs-validation"
                     novalidate>
                     @csrf
                     <div class="form-row mb-3">
                         <div class="col-3 m-auto">
-                            <label for="validationTooltip05">Nama</label>
+                            <label for="validationTooltip05">Semester</label>
                         </div>
                         <div class="col-9">
-                            <input type="text" class="form-control" id="validationTooltip05" name="name"
-                                value="{{ $user->name }}" required>
+                            <select class="form-control choicesjs" id="inputGroupSelect01" name="semester">
+                                <option selected disabled>Choose Semester</option>
+                                @for ($i = 1; $i < 9; $i++)
+                                    <option value="{{ $i }}" {{ $kelas->semester == $i ? 'selected' : '' }}>
+                                        {{ 'Semester ' . $i }}</option>
+                                @endfor
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row mb-3">
+                        <div class="col-3 m-auto">
+                            <label for="validationTooltip05">Kelas</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="text" class="form-control" id="validationTooltip05" name="kelas"
+                                value="{{ $kelas->kelas }}" required>
                             <div class="invalid-tooltip">
                                 Please Add the Data!
                             </div>
@@ -26,47 +40,13 @@
                     </div>
                     <div class="form-row mb-3">
                         <div class="col-3 m-auto">
-                            <label for="validationTooltip05">Username</label>
+                            <label for="validationTooltip05">Tahun</label>
                         </div>
                         <div class="col-9">
-                            <input type="text" class="form-control" id="validationTooltip05" name="username"
-                                value="{{ $user->username }}" required>
+                            <input type="text" class="form-control" id="validationTooltip05" name="tahun"
+                                value="{{ $kelas->tahun }}" required>
                             <div class="invalid-tooltip">
                                 Please Add the Data!
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row mb-3">
-                        <div class="col-3 m-auto">
-                            <label for="validationTooltip05">Password</label>
-                        </div>
-                        <div class="col-9">
-                            <input type="password" class="form-control" id="validationTooltip05" name="password"
-                                placeholder="********" required>
-                            <div class="invalid-tooltip">
-                                Please Add the Data!
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row mb-3">
-                        <div class="col-3 m-auto">
-                            <label for="validationTooltip05">Role</label>
-                        </div>
-                        <div class="col-9">
-                            <div class="radio d-inline-block m-2">
-                                <input type="radio" name="role" id="radio2" value="admin"
-                                    {{ $user->role == 'admin' ? 'checked' : '' }}>
-                                <label for="radio2">Admin</label>
-                            </div>
-                            <div class="radio d-inline-block m-2">
-                                <input type="radio" name="role" id="radio2" value="guru"
-                                    {{ $user->role == 'guru' ? 'checked' : '' }}>
-                                <label for="radio2">Guru</label>
-                            </div>
-                            <div class="radio d-inline-block m-2">
-                                <input type="radio" name="role" id="radio2" value="siswa"
-                                    {{ $user->role == 'siswa' ? 'checked' : '' }}>
-                                <label for="radio2">Siswa</label>
                             </div>
                         </div>
                     </div>
