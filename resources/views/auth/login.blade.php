@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{ asset('datum') }}/assets/css/backend.css?v=1.0.0">
 </head>
 
-<body class=" "style="background: #280a50">`
+<body class=" "style="background: #b25936">
     <div class="wrapper">
         <section class="login-content">
             <div class="container h-100">

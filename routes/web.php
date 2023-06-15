@@ -13,7 +13,10 @@ use App\Http\Controllers\PenilaianController;
 use App\Http\Controllers\Auth\LoginController;
 
 
-Route::get('/', [LoginController::class, 'index'])->name('login');
+Route::get('/', function () {
+    return view('landing');
+});
+Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::post('post-login', [LoginController::class, 'login'])->name('login.post');
 Route::get('logout', [LoginController::class, 'logout'])->name('logout-dashboard');
 
@@ -45,8 +48,7 @@ Route::middleware(['user-access:siswa'])->group(function () {
     Route::get('/data-penilaian', [PenilaianController::class, 'index'])->name('index-penilaian');
     Route::get('/data-penilaian/detail/{id}', [PenilaianController::class, 'detail'])->name('detail-penilaian');
     Route::post('/data-penilaian/update/{id}', [PenilaianController::class, 'processUpdate'])->name('edit-penilaian');
-
-    Route::get('/hal_hasil', [SoalController::class, 'hasil'])->name('hasil-siswa');
+    Route::get('/hal_hasil', [PenilaianController::class, 'hasil'])->name('hasil-siswa');
 
     // Dosen
     Route::get('/data-dosen', [DosenController::class, 'index'])->name('index-dosen');

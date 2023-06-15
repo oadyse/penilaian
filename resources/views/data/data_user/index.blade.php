@@ -144,6 +144,7 @@
             "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
         buttons: [{
             extend: "print",
+            title: "Data User",
             className: 'd-print-none',
             exportOptions: {
                 columns: [0, 1, 2, 3, 4, 5]

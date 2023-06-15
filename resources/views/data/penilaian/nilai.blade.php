@@ -10,14 +10,17 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-header d-flex justify-content-between mb-3">
-                            <a class="btn btn-primary btn-sm" href="{{route('index-penilaian')}}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75" />
-                                </svg>
-                                Back
-                            </a>
+                            @if (Auth::user()->role == 'siswa')
+                            @else
+                                <a class="btn btn-primary btn-sm" href="{{ route('index-penilaian') }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" fill="none"
+                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75" />
+                                    </svg>
+                                    Back
+                                </a>
+                            @endif
                             <div class="header-title">
                                 <h3 class="card-title">
                                     Kartu Hasil Studi
@@ -32,31 +35,34 @@
                                         <tr>
                                             <td width="14%">NIM</td>
                                             <td width="1%">:</td>
-                                            <td>{{$siswa->nis}}</td>
+                                            <td>{{ $siswa->nis }}</td>
                                             <td width="14%">Kelas/Semester</td>
                                             <td width="1%">:</td>
-                                            <td>{{$siswa->kelas->kelas}}</td>
+                                            <td>{{ $siswa->kelas->kelas }}</td>
                                         </tr>
                                         <tr>
                                             <td width="14%">Nama</td>
                                             <td width="1%">:</td>
-                                            <td>{{$siswa->nama}}</td>
+                                            <td>{{ $siswa->nama }}</td>
                                             <td width="14%">Tahun Angkatan</td>
                                             <td width="1%">:</td>
-                                            <td>{{$siswa->kelas->tahun}}</td>
+                                            <td>{{ $siswa->kelas->tahun }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                             <div class="table-responsive">
-                                <table id="datatable-1" class="table table-striped table-bordered">
+                                <table id="datatable-1" class="table data-table table-striped table-bordered">
                                     <thead class="text-center">
                                         <tr>
                                             <th width="2%">No</th>
                                             <th>Mata Kuliah</th>
                                             <th>Nilai</th>
                                             <th>Index</th>
-                                            <th></th>
+                                            @if (Auth::user()->role == 'siswa')
+                                            @else
+                                                <th></th>
+                                            @endif
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -71,20 +77,23 @@
                                             <td>{{ $matkul->matkul }}</td>
                                             <td>{{ $matkul->penilaian($siswa->id)?->nilai }}</td>
                                             <td class="text-center">{{ $matkul->penilaian($siswa->id)?->index }}</td>
-                                            <td>
-                                                <a class="iq-icons-list m-0 text-left" href="" title="Edit"
-                                                    data-toggle="modal" data-target="#edit{{ $id }}">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                        class="m-0">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-                                                    </svg>
-                                                </a>
+                                            @if (Auth::user()->role == 'siswa')
+                                            @else
+                                                <td>
+                                                    <a class="iq-icons-list m-0 text-left" href="" title="Edit"
+                                                        data-toggle="modal" data-target="#edit{{ $id }}">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                            class="m-0">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                                                        </svg>
+                                                    </a>
 
-                                                {{-- Modal Edit --}}
-                                                @include('data.penilaian.edit')
-                                            </td>
+                                                    {{-- Modal Edit --}}
+                                                    @include('data.penilaian.edit')
+                                                </td>
+                                            @endif
                                         </tr>
                                         <?php
                                         $no += 1;
@@ -151,7 +160,21 @@
     </script>
 @endif
 <!-- /Alert -->
-
+<script>
+    const table = $('.data-table').DataTable({
+        dom: "<'row'<'col-sm-12 col-md-3'l><'col-sm-12 col-md-3'B><'col-sm-12 col-md-6'f>>" +
+            "<'row'<'col-sm-12'tr>>" +
+            "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+        buttons: [{
+            extend: "print",
+            className: 'd-print-none',
+            exportOptions: {
+                columns: [0, 1, 2, 3]
+            },
+            text: 'Cetak'
+        }, ],
+    });
+</script>
 </body>
 
 </html>

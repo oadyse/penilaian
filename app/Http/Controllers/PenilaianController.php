@@ -7,6 +7,7 @@ use App\Models\Siswa;
 use App\Models\Matkul;
 use App\Models\Penilaian;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PenilaianController extends Controller
@@ -48,6 +49,14 @@ class PenilaianController extends Controller
         $id = base64_decode($id);
         $data = Penilaian::where(['id_siswa'=>$id])->first();
         $siswa = Siswa::where(['id'=>$id])->first();
+        $matkul = Matkul::all();
+        return view('data.penilaian.nilai', compact('data', 'siswa', 'matkul'));
+    }
+
+    public function hasil()
+    {
+        $data = Penilaian::where(['id_siswa'=>Auth::user()->siswa->id])->first();
+        $siswa = Siswa::where(['id'=>Auth::user()->siswa->id])->first();
         $matkul = Matkul::all();
         return view('data.penilaian.nilai', compact('data', 'siswa', 'matkul'));
     }

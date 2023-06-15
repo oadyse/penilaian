@@ -22,14 +22,14 @@
 
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table id="datatable-1" class="table table-striped table-bordered">
+                                <table id="datatable-1" class="table data-table table-striped table-bordered">
                                     <thead class="text-center">
                                         <tr>
                                             <th width="2%">No</th>
                                             <th width="10%">NIM</th>
                                             <th>Nama Lengkap</th>
                                             <th width="15%">Nilai Akhir</th>
-                                            <th></th>
+                                            <th width="10%"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -43,7 +43,7 @@
                                             <td>{{ $no }}</td>
                                             <td>{{ $siswa->nis }}</td>
                                             <td>{{ $siswa->nama }}</td>
-                                            <td>{{ $siswa->hitungPenilaian() / $totalMatkul }}</td>
+                                            <td class="text-center">{{ $siswa->hitungPenilaian() / $totalMatkul }}</td>
                                             <td>
                                                 <a class="iq-icons-list m-0 text-left"
                                                     href="{{ route('detail-penilaian', base64_encode($id)) }}"
@@ -131,9 +131,10 @@
             "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
         buttons: [{
             extend: "print",
+            title: "Data Penilaian",
             className: 'd-print-none',
             exportOptions: {
-                columns: [0, 1, 2, 3, 4, 5]
+                columns: [0, 1, 2, 3]
             },
             text: 'Cetak'
         }, ],

@@ -143,9 +143,10 @@
             "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
         buttons: [{
             extend: "print",
+            title: "Data Kelas",
             className: 'd-print-none',
             exportOptions: {
-                columns: [0, 1, 2, 3, 4, 5]
+                columns: [0, 1, 2, 3]
             },
             text: 'Cetak'
         }, ],
