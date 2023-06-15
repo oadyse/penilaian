@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('mengajar', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_dosen')->nullable()->references('id')->on('dosen');
-            $table->foreignId('id_matkul')->nullable()->references('id')->on('matkul');
+            $table->foreignId('id_dosen')->nullable()->references('id')->on('dosen')->onDelete('cascade');
+            $table->foreignId('id_matkul')->nullable()->references('id')->on('matkul')->onDelete('cascade');
             $table->timestamps();
         });
     }

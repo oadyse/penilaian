@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('penilaian', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_siswa')->nullable()->references('id')->on('siswa');
-            $table->foreignId('id_matkul')->nullable()->references('id')->on('matkul');
+            $table->foreignId('id_siswa')->nullable()->references('id')->on('siswa')->onDelete('cascade');
+            $table->foreignId('id_matkul')->nullable()->references('id')->on('matkul')->onDelete('cascade');
             $table->integer('nilai');
             $table->string('index');
             $table->timestamps();
