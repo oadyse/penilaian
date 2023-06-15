@@ -17,7 +17,7 @@
                             <label for="validationTooltip05">NIK</label>
                         </div>
                         <div class="col-9">
-                            <input type="text" class="form-control" id="validationTooltip05" name="name"
+                            <input type="text" class="form-control" id="validationTooltip05" name="nik"
                                 value="{{ $dosen->nik }}" required>
                             <div class="invalid-tooltip">
                                 Please Add the Data!
@@ -29,7 +29,7 @@
                             <label for="validationTooltip05">Nama</label>
                         </div>
                         <div class="col-9">
-                            <input type="text" class="form-control" id="validationTooltip05" name="username"
+                            <input type="text" class="form-control" id="validationTooltip05" name="nama"
                                 value="{{ $dosen->nama }}" required>
                             <div class="invalid-tooltip">
                                 Please Add the Data!
@@ -58,9 +58,11 @@
                             <label for="validationTooltip05">Mata Kuliah yang Diampu</label>
                         </div>
                         <div class="col-9">
-                            <select multiple class="form-control choicesjs" id="sel1" name="id_parameter[]">
+                            <select multiple class="form-control choicesjs" id="sel1" name="matkul[]">
                                 @foreach ($matkul as $x)
-                                    <option value="{{ $x->id }}">
+                                    <option value="{{ $x->id }}" 
+                                        {{!in_array($x->id,$dosen->matkul->pluck('id_matkul')->toArray())?:'selected'}}
+                                        >
                                         {{ $x->matkul }}
                                     </option>
                                 @endforeach
@@ -72,9 +74,11 @@
                             <label for="validationTooltip05">Kelas</label>
                         </div>
                         <div class="col-9">
-                            <select multiple class="form-control choicesjs" id="sel1" name="id_parameter[]">
+                            <select multiple class="form-control choicesjs" id="sel1" name="kelas[]">
                                 @foreach ($kelas as $class)
-                                    <option value="{{ $class->id }}">
+                                    <option value="{{ $class->id }}" 
+                                        {{!in_array($class->id,$dosen->kelas->pluck('id_kelas')->toArray())?:'selected'}}
+                                        >
                                         {{ $class->kelas }}
                                     </option>
                                 @endforeach

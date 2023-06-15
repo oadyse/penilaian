@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('dosen', function (Blueprint $table) {
+        Schema::create('mengajar', function (Blueprint $table) {
             $table->id();
-            $table->string('nik')->unique();
-            $table->string('nama');
-            $table->enum('gender', ['L', 'P']);
-            $table->foreignId('id_user')->nullable()->references('id')->on('users');
+            $table->foreignId('id_dosen')->nullable()->references('id')->on('dosen');
+            $table->foreignId('id_matkul')->nullable()->references('id')->on('matkul');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dosen');
+        Schema::dropIfExists('mengajar');
     }
 };

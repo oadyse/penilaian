@@ -22,8 +22,28 @@ class DosenSeeder extends Seeder
                     'nama' => 'Nur Fitrianti Fahrudin S.Kom., M.T.',
                     'gender' => 'P',
                     'id_user' => '2',
-                    'id_kelas' => '1',
-                    'id_matkul' => '1',
+                ],
+            ]
+        );
+
+        DB::table('mengajar')->insert(
+            [
+                [
+                    'id_matkul' => 1,
+                    'id_dosen' => 1,
+                ],
+                [
+                    'id_matkul' => 2,
+                    'id_dosen' => 1,
+                ],
+            ]
+        );
+
+        DB::table('pengampu')->insert(
+            [
+                [
+                    'id_kelas' => 1,
+                    'id_dosen' => 1,
                 ],
             ]
         );

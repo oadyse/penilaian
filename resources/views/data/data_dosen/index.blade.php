@@ -55,10 +55,10 @@
                                                 @endif
                                             </td>
                                             <td>
-
+                                                {{ $dosen->mengajar() }}
                                             </td>
                                             <td>
-
+                                                {{ $dosen->mengampu() }}
                                             </td>
                                             <td>
                                                 <a class="iq-icons-list m-0 text-left" href="" title="Edit"

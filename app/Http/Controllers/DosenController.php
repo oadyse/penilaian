@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Dosen;
 use App\Models\Kelas;
 use App\Models\Matkul;
+use App\Models\Mengajar;
+use App\Models\Pengampu;
 use Illuminate\Http\Request;
 
 class DosenController extends Controller
@@ -20,12 +22,23 @@ class DosenController extends Controller
     public function addNew(Request $request)
     {
         $adddosen = Dosen::create([
-            'name' => $request->name,
-            'username' => $request->username,
-            'password' => bcrypt($request->password),
-            'role' => $request->role,
+            'nama' => $request->nama,
+            'nik' => $request->nik,
+            'gender' => $request->gender,
         ]);
         $adddosen->save();
+        foreach($request->input('matkul') as $matkul) {
+            Mengajar::create([
+                'id_dosen' => $adddosen->id,
+                'id_matkul' => $matkul
+            ]);
+        }
+        foreach($request->input('kelas') as $kelas) {
+            Pengampu::create([
+                'id_dosen' => $adddosen->id,
+                'id_kelas' => $kelas
+            ]);
+        }
 
         if ($adddosen) {
             return redirect('/data-dosen')->with("successAdd", "Data added successfully");
@@ -38,11 +51,24 @@ class DosenController extends Controller
     {
         $id = base64_decode($id);
         $process = Dosen::findOrFail($id)->update([
-            'name' => $request->name,
-            'username' => $request->username,
-            'password' => bcrypt($request->password),
-            'role' => $request->role,
+            'nama' => $request->nama,
+            'nik' => $request->nik,
+            'gender' => $request->gender,
         ]);
+        Mengajar::where('id_dosen',$id)->delete();
+        foreach($request->input('matkul') as $matkul) {
+            Mengajar::create([
+                'id_dosen' => $id,
+                'id_matkul' => $matkul
+            ]);
+        }
+        Pengampu::where('id_dosen',$id)->delete();
+        foreach($request->input('kelas') as $kelas) {
+            Pengampu::create([
+                'id_dosen' => $id,
+                'id_kelas' => $kelas
+            ]);
+        }
         if ($process) {
             return redirect('/data-dosen')->with("successUpdate", "Data updated successfully");
         } else {

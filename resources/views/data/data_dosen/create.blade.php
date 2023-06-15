@@ -16,7 +16,7 @@
                             <label for="validationTooltip05">NIK</label>
                         </div>
                         <div class="col-9">
-                            <input type="text" class="form-control" id="validationTooltip05" name="name" required>
+                            <input type="text" class="form-control" id="validationTooltip05" name="nik" required>
                             <div class="invalid-tooltip">
                                 Please Add the Data!
                             </div>
@@ -27,7 +27,7 @@
                             <label for="validationTooltip05">Nama</label>
                         </div>
                         <div class="col-9">
-                            <input type="text" class="form-control" id="validationTooltip05" name="username"
+                            <input type="text" class="form-control" id="validationTooltip05" name="nama"
                                 required>
                             <div class="invalid-tooltip">
                                 Please Add the Data!
@@ -54,7 +54,7 @@
                             <label for="validationTooltip05">Mata Kuliah yang Diampu</label>
                         </div>
                         <div class="col-9">
-                            <select multiple class="form-control choicesjs" id="sel1" name="id_parameter[]">
+                            <select multiple class="form-control choicesjs" id="sel1" name="matkul[]">
                                 @foreach ($matkul as $x)
                                     <option value="{{ $x->id }}">
                                         {{ $x->matkul }}
@@ -68,7 +68,7 @@
                             <label for="validationTooltip05">Kelas</label>
                         </div>
                         <div class="col-9">
-                            <select multiple class="form-control choicesjs" id="sel1" name="id_parameter[]">
+                            <select multiple class="form-control choicesjs" id="sel1" name="kelas[]">
                                 @foreach ($kelas as $class)
                                     <option value="{{ $class->id }}">
                                         {{ $class->kelas }}

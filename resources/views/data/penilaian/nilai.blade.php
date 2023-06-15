@@ -10,7 +10,7 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-header d-flex justify-content-between mb-3">
-                            <a class="btn btn-primary btn-sm">
+                            <a class="btn btn-primary btn-sm" href="{{route('index-penilaian')}}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -32,18 +32,18 @@
                                         <tr>
                                             <td width="14%">NIM</td>
                                             <td width="1%">:</td>
-                                            <td></td>
+                                            <td>{{$siswa->nis}}</td>
                                             <td width="14%">Kelas/Semester</td>
                                             <td width="1%">:</td>
-                                            <td></td>
+                                            <td>{{$siswa->kelas->kelas}}</td>
                                         </tr>
                                         <tr>
                                             <td width="14%">Nama</td>
                                             <td width="1%">:</td>
-                                            <td></td>
+                                            <td>{{$siswa->nama}}</td>
                                             <td width="14%">Tahun Angkatan</td>
                                             <td width="1%">:</td>
-                                            <td></td>
+                                            <td>{{$siswa->kelas->tahun}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -69,9 +69,8 @@
                                         <tr>
                                             <td>{{ $no }}</td>
                                             <td>{{ $matkul->matkul }}</td>
-                                            <td></td>
-                                            <td class="text-center"></td>
-                                            <td class="text-center"></td>
+                                            <td>{{ $matkul->penilaian($siswa->id)?->nilai }}</td>
+                                            <td class="text-center">{{ $matkul->penilaian($siswa->id)?->index }}</td>
                                             <td>
                                                 <a class="iq-icons-list m-0 text-left" href="" title="Edit"
                                                     data-toggle="modal" data-target="#edit{{ $id }}">
@@ -84,7 +83,7 @@
                                                 </a>
 
                                                 {{-- Modal Edit --}}
-                                                {{-- @include('data.penilaian.edit') --}}
+                                                @include('data.penilaian.edit')
                                             </td>
                                         </tr>
                                         <?php

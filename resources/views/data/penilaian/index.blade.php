@@ -36,14 +36,14 @@
                                         <?php
                                         $initial = request()->query('page') ?? 1;
                                         $no = ($initial-1)*10 + 1;
-                                        foreach ($data as $penilaian) {
-                                            $id = $penilaian->id_2;
+                                        foreach ($data as $siswa) {
+                                            $id = $siswa->id;
                                         ?>
                                         <tr>
                                             <td>{{ $no }}</td>
-                                            <td>{{ $penilaian->nis }}</td>
-                                            <td>{{ $penilaian->nama }}</td>
-                                            <td></td>
+                                            <td>{{ $siswa->nis }}</td>
+                                            <td>{{ $siswa->nama }}</td>
+                                            <td>{{ $siswa->hitungPenilaian()/$totalMatkul }}</td>
                                             <td>
                                                 <a class="iq-icons-list m-0 text-left"
                                                     href="{{ route('detail-penilaian', base64_encode($id)) }}"

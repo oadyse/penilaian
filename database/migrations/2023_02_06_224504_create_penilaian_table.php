@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('penilaian', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_siswa')->nullable()->references('id')->on('siswa');
-            $table->integer('sikap');
-            $table->integer('ketrampilan');
-            $table->text('catatan');
+            $table->foreignId('id_matkul')->nullable()->references('id')->on('matkul');
+            $table->integer('nilai');
+            $table->string('index');
             $table->timestamps();
         });
     }

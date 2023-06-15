@@ -22,4 +22,18 @@ class Siswa extends Model
     {
         return $this->hasOne(Dosen::class, 'id', 'pa');
     }
+
+    public function nilai()
+    {
+        return $this->hasMany(Penilaian::class, 'id_siswa', 'id');
+    }
+
+    public function hitungPenilaian() {
+        $total = 0;
+        foreach($this->nilai as $nilai) {
+            $total += $nilai->nilai;
+        }
+        
+        return $total;
+    }
 }

@@ -15,11 +15,31 @@ class Dosen extends Model
 
     public function kelas()
     {
-        return $this->hasOne(Kelas::class, 'id', 'id_kelas');
+        return $this->hasMany(Pengampu::class, 'id_kelas', 'id');
     }
 
     public function matkul()
     {
-        return $this->hasOne(Matkul::class, 'id', 'id_kmatkul');
+        return $this->hasMany(Mengajar::class, 'id_dosen', 'id');
+    }
+
+    public function mengajar()
+    {
+        $return = '';
+        foreach($this->matkul as $matkul) {
+            $return .= $matkul->matkul->matkul .', ';
+        }
+
+        return rtrim($return,', ');
+    }
+
+    public function mengampu()
+    {
+        $return = '';
+        foreach($this->kelas as $kelas) {
+            $return .= $kelas->kelas->kelas .', ';
+        }
+
+        return rtrim($return,', ');
     }
 }
