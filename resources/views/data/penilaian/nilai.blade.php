@@ -9,62 +9,53 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card">
-                        <div class="card-header d-flex justify-content-center mb-3">
+                        <div class="card-header d-flex justify-content-between mb-3">
+                            <a class="btn btn-primary btn-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75" />
+                                </svg>
+                                Back
+                            </a>
                             <div class="header-title">
-                                <h5 class="card-title text-center">
-                                    PENILAIAN AUTENTIK <br>
-                                    Mata Pelajaran Bahasa Indonesia <br>
-                                    MTs Ma'had Al Zaytun <br>
-                                    Semester Genap 2023-2024 <br>
-                                </h5>
+                                <h3 class="card-title">
+                                    Kartu Hasil Studi
+                                </h3>
                             </div>
+                            <div></div>
                         </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <form class="form-inline" method="GET">
-                                    <div class="col-10">
-                                        <select class="form-control choicesjs" id="inputGroupSelect01" name="id_kelas">
-                                            <option selected disabled>Search Kelas</option>
-                                            @foreach ($kelas as $class)
-                                                <option value="{{ $class->id }}"
-                                                    {{ $class->id == $filter ? 'selected' : '' }}>{{ $class->kelas }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="col-1">
-                                        <button type="submit" class="btn btn-primary">Filter</button>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="col-6">
-                                <div class="input-group mb-3 px-3">
-                                    <input type="text" class="form-control" placeholder="Search Nama Siswa"
-                                        aria-label="notification" aria-describedby="basic-addon4">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary" type="submit">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20px" Height="20px"
-                                                fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                                stroke="currentColor" class="w-6 h-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-borderless">
+                                    <tbody>
+                                        <tr>
+                                            <td width="14%">NIM</td>
+                                            <td width="1%">:</td>
+                                            <td></td>
+                                            <td width="14%">Kelas/Semester</td>
+                                            <td width="1%">:</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="14%">Nama</td>
+                                            <td width="1%">:</td>
+                                            <td></td>
+                                            <td width="14%">Tahun Angkatan</td>
+                                            <td width="1%">:</td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                             <div class="table-responsive">
                                 <table id="datatable-1" class="table table-striped table-bordered">
                                     <thead class="text-center">
                                         <tr>
                                             <th width="2%">No</th>
-                                            <th width="10%">No.Induk</th>
-                                            <th>Nama</th>
-                                            <th width="15%">Sikap</th>
-                                            <th width="15%">Ketrampilan</th>
+                                            <th>Mata Kuliah</th>
+                                            <th>Nilai</th>
+                                            <th>Index</th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -72,29 +63,15 @@
                                         <?php
                                         $initial = request()->query('page') ?? 1;
                                         $no = ($initial-1)*10 + 1;
-                                        foreach ($data as $penilaian) {
-                                            $ketrampilan = $penilaian->ketrampilan*100/12;
-
-                                            if ($penilaian->sikap == 4) {
-                                                $sikap = 100;
-                                            } else if ($penilaian->sikap == 3) {
-                                                $sikap = 90;
-                                            } else if ($penilaian->sikap == 2) {
-                                                $sikap = 80;
-                                            } else if ($penilaian->sikap == 1) {
-                                                $sikap = 70;
-                                            } else if (empty($penilaian->sikap)) {
-                                                $sikap = 0;
-                                            }
-                                            $id = $penilaian->id_2;
+                                        foreach ($matkul as $matkul) {
+                                            $id = $matkul->id;
                                         ?>
                                         <tr>
                                             <td>{{ $no }}</td>
-                                            <td>{{ $penilaian->nis }}</td>
-                                            <td>{{ $penilaian->nama }}</td>
-                                            <td class="text-center">{{ $sikap }}</td>
-                                            <td class="text-center">
-                                                {{ number_format((float) $ketrampilan, 2, '.', '') }}</td>
+                                            <td>{{ $matkul->matkul }}</td>
+                                            <td></td>
+                                            <td class="text-center"></td>
+                                            <td class="text-center"></td>
                                             <td>
                                                 <a class="iq-icons-list m-0 text-left" href="" title="Edit"
                                                     data-toggle="modal" data-target="#edit{{ $id }}">
@@ -107,7 +84,7 @@
                                                 </a>
 
                                                 {{-- Modal Edit --}}
-                                                @include('data.penilaian.edit')
+                                                {{-- @include('data.penilaian.edit') --}}
                                             </td>
                                         </tr>
                                         <?php
@@ -117,7 +94,6 @@
                                     </tbody>
                                 </table>
                             </div>
-                            {{ $data->links() }}
                         </div>
                     </div>
                 </div>

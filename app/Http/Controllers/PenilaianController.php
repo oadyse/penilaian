@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kelas;
-use App\Models\Answer;
-use App\Models\Kriteria;
+use App\Models\Siswa;
+use App\Models\Matkul;
 use App\Models\Penilaian;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -97,5 +97,13 @@ class PenilaianController extends Controller
                 return redirect()->back()->withInput()->withErrors("Terjadi kesalahan");
             }
         }
+    }
+
+    public function detail(Request $request, $id)
+    {
+        $data = Penilaian::all();
+        $siswa = Siswa::all();
+        $matkul = Matkul::all();
+        return view('data.penilaian.nilai', compact('data', 'siswa', 'matkul'));
     }
 }

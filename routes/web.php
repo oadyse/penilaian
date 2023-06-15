@@ -43,6 +43,7 @@ Route::middleware(['user-access:siswa'])->group(function () {
 
     // Penilaian
     Route::get('/data-penilaian', [PenilaianController::class, 'index'])->name('index-penilaian');
+    Route::get('/data-penilaian/detail/{id}', [PenilaianController::class, 'detail'])->name('detail-penilaian');
     Route::post('/data-penilaian/update/{id}', [PenilaianController::class, 'processUpdate'])->name('edit-penilaian');
 
     Route::get('/hal_hasil', [SoalController::class, 'hasil'])->name('hasil-siswa');
