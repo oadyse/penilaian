@@ -22,7 +22,7 @@
 @include('layout.footer')
 
 <!-- Backend Bundle JavaScript -->
-@include('layout.script')
+{{-- @include('layout.script') --}}
 </body>
 
 </html>

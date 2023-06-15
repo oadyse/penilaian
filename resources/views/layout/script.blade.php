@@ -34,6 +34,7 @@
 
 <!-- app JavaScript -->
 <script src="{{ asset('datum') }}/assets/js/app.js"></script>
+<script src="{{ asset('datatables') }}/datatables.min.js"></script>
 
 {{-- Sweat Alert --}}
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

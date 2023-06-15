@@ -15,7 +15,7 @@ class Dosen extends Model
 
     public function kelas()
     {
-        return $this->hasMany(Pengampu::class, 'id_kelas', 'id');
+        return $this->hasMany(Pengampu::class, 'id_dosen', 'id');
     }
 
     public function matkul()
@@ -37,7 +37,7 @@ class Dosen extends Model
     {
         $return = '';
         foreach($this->kelas as $kelas) {
-            $return .= $kelas->kelas->kelas .', ';
+            $return .= $kelas->kelas->kelas .' ('.$kelas->kelas->tahun.'), ';
         }
 
         return rtrim($return,', ');
