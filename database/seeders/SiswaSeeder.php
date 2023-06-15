@@ -18,7 +18,7 @@ class SiswaSeeder extends Seeder
         DB::table('siswa')->insert(
             [
                 [
-                    'nis' => 'M3119082',
+                    'nis' => '162020026',
                     'nama' => 'Rizvan AS',
                     'gender' => 'L',
                     'id_kelas' => '1',

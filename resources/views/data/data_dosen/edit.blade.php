@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createTitle">Form Data Dosen</h5>
+                <h5 class="modal-title" id="createTitle">Edit Data Dosen</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -60,9 +60,8 @@
                         <div class="col-9">
                             <select multiple class="form-control choicesjs" id="sel1" name="matkul[]">
                                 @foreach ($matkul as $x)
-                                    <option value="{{ $x->id }}" 
-                                        {{!in_array($x->id,$dosen->matkul->pluck('id_matkul')->toArray())?:'selected'}}
-                                        >
+                                    <option value="{{ $x->id }}"
+                                        {{ !in_array($x->id, $dosen->matkul->pluck('id_matkul')->toArray()) ?: 'selected' }}>
                                         {{ $x->matkul }}
                                     </option>
                                 @endforeach
@@ -76,9 +75,8 @@
                         <div class="col-9">
                             <select multiple class="form-control choicesjs" id="sel1" name="kelas[]">
                                 @foreach ($kelas as $class)
-                                    <option value="{{ $class->id }}" 
-                                        {{!in_array($class->id,$dosen->kelas->pluck('id_kelas')->toArray())?:'selected'}}
-                                        >
+                                    <option value="{{ $class->id }}"
+                                        {{ !in_array($class->id, $dosen->kelas->pluck('id_kelas')->toArray()) ?: 'selected' }}>
                                         {{ $class->kelas }}
                                     </option>
                                 @endforeach
