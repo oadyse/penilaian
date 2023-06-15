@@ -43,7 +43,7 @@
                                             <td>{{ $no }}</td>
                                             <td>{{ $siswa->nis }}</td>
                                             <td>{{ $siswa->nama }}</td>
-                                            <td>{{ $siswa->hitungPenilaian()/$totalMatkul }}</td>
+                                            <td>{{ $siswa->hitungPenilaian() / $totalMatkul }}</td>
                                             <td>
                                                 <a class="iq-icons-list m-0 text-left"
                                                     href="{{ route('detail-penilaian', base64_encode($id)) }}"
@@ -124,6 +124,21 @@
 @endif
 <!-- /Alert -->
 
+<script>
+    const table = $('.data-table').DataTable({
+        dom: "<'row'<'col-sm-12 col-md-3'l><'col-sm-12 col-md-3'B><'col-sm-12 col-md-6'f>>" +
+            "<'row'<'col-sm-12'tr>>" +
+            "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+        buttons: [{
+            extend: "print",
+            className: 'd-print-none',
+            exportOptions: {
+                columns: [0, 1, 2, 3, 4, 5]
+            },
+            text: 'Cetak'
+        }, ],
+    });
+</script>
 </body>
 
 </html>

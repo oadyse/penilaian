@@ -27,7 +27,7 @@
                                 <table id="datatable-1" class="table data-table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th width="2data.uji.index%">No</th>
+                                            <th width="2%">No</th>
                                             <th>NIK</th>
                                             <th>Nama</th>
                                             <th>Jenis Kelamin</th>
@@ -153,12 +153,17 @@
 
 <script>
     const table = $('.data-table').DataTable({
-      dom: "<'row'<'col-sm-12 col-md-3'l><'col-sm-12 col-md-3'B><'col-sm-12 col-md-6'f>>" +
+        dom: "<'row'<'col-sm-12 col-md-3'l><'col-sm-12 col-md-3'B><'col-sm-12 col-md-6'f>>" +
             "<'row'<'col-sm-12'tr>>" +
             "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
-      buttons: [
-        { extend: "print", className: 'd-print-none',exportOptions: { columns: [0, 1, 2, 3, 4,5] }, text: 'Cetak' },
-      ],
+        buttons: [{
+            extend: "print",
+            className: 'd-print-none',
+            exportOptions: {
+                columns: [0, 1, 2, 3, 4, 5]
+            },
+            text: 'Cetak'
+        }, ],
     });
 </script>
 

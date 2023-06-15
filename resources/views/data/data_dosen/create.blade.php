@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{ route('add-dosen') }}" class="needs-validation" novalidate>
+                <form method="POST" action="{{ route('add-dosen') }}" class="needs-validation">
                     @csrf
                     <div class="form-row mb-3">
                         <div class="col-3 m-auto">
@@ -27,8 +27,7 @@
                             <label for="validationTooltip05">Nama</label>
                         </div>
                         <div class="col-9">
-                            <input type="text" class="form-control" id="validationTooltip05" name="nama"
-                                required>
+                            <input type="text" class="form-control" id="validationTooltip05" name="nama" required>
                             <div class="invalid-tooltip">
                                 Please Add the Data!
                             </div>
@@ -47,6 +46,9 @@
                                 <input type="radio" name="gender" id="radio2" value="P">
                                 <label for="radio2">Perempuan</label>
                             </div>
+                            <div class="invalid-tooltip">
+                                Please Choose One!
+                            </div>
                         </div>
                     </div>
                     <div class="form-row mb-3">
@@ -54,13 +56,16 @@
                             <label for="validationTooltip05">Mata Kuliah yang Diampu</label>
                         </div>
                         <div class="col-9">
-                            <select multiple class="form-control choicesjs" id="sel1" name="matkul[]">
+                            <select multiple class="form-control choicesjs" id="sel1" name="matkul[]" required>
                                 @foreach ($matkul as $x)
                                     <option value="{{ $x->id }}">
                                         {{ $x->matkul }}
                                     </option>
                                 @endforeach
                             </select>
+                            <div class="invalid-tooltip">
+                                Please Select the Data!
+                            </div>
                         </div>
                     </div>
                     <div class="form-row mb-3">
@@ -68,13 +73,16 @@
                             <label for="validationTooltip05">Kelas</label>
                         </div>
                         <div class="col-9">
-                            <select multiple class="form-control choicesjs" id="sel1" name="kelas[]">
+                            <select multiple class="form-control choicesjs" id="sel1" name="kelas[]" required>
                                 @foreach ($kelas as $class)
                                     <option value="{{ $class->id }}">
-                                        {{ $class->kelas }}
+                                        {{ $class->kelas . ' - ' . $class->tahun }}
                                     </option>
                                 @endforeach
                             </select>
+                            <div class="invalid-tooltip">
+                                Please select the Data!
+                            </div>
                         </div>
                     </div>
             </div>
