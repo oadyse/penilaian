@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nik')->unique();
             $table->string('nama');
             $table->enum('gender', ['L', 'P']);
-            $table->foreignId('id_user')->nullable()->references('id')->on('users');
+            $table->foreignId('id_user')->nullable()->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('pengampu', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_dosen')->nullable()->references('id')->on('dosen');
-            $table->foreignId('id_kelas')->nullable()->references('id')->on('kelas');
+            $table->foreignId('id_dosen')->nullable()->references('id')->on('dosen')->onDelete('cascade');
+            $table->foreignId('id_kelas')->nullable()->references('id')->on('kelas')->onDelete('cascade');
             $table->timestamps();
         });
     }
